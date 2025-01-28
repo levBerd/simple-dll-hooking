@@ -3,15 +3,15 @@
 
 
 int main(int argc, char* argv[]) {
-	if (argc != 3) {
-		std::cout << "Usage <dll path> <pid>" << std::endl;
-		exit(1);
-	}
+    if (argc != 3) {
+        std::cout << "Usage <dll path> <pid>" << std::endl;
+        exit(1);
+    }
 
     // check if argv[2] is pid of process name
     char* intcheck;
     strtol(argv[2], &intcheck, 10);
-    
+
     DWORD pid = 0;
 
     // not a number
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     }
 
     pid = std::atoi(argv[2]);
-	
+
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
 
     if (!hProcess)
@@ -42,5 +42,5 @@ int main(int argc, char* argv[]) {
     CloseHandle(hProcess);
 
 
-	return 0;
+    return 0;
 }
